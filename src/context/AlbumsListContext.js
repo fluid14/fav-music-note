@@ -19,11 +19,18 @@ class AlbumListProvider extends Component {
     if (item !== '') {
       this.setState(
         prevState => ({
-          albumList: [...prevState.albumList, item],
+          albumList: [...prevState.albumList, { name: item, liked: false }],
         }),
         () => localStorage.setItem('albums', JSON.stringify(this.state.albumList)),
       );
     }
+  };
+
+  deleteAlbum = item => {
+    const newList = this.state.albumList.filter(album => album.name !== item);
+    this.setState({ albumList: newList }, () =>
+      localStorage.setItem('albums', JSON.stringify(this.state.albumList)),
+    );
   };
 
   render() {
@@ -31,7 +38,14 @@ class AlbumListProvider extends Component {
     const { albumList } = this.state;
     console.log(albumList);
     return (
-      <AlbumListContext.Provider value={{ albumList, addAlbum: this.addAlbum }}>
+      <AlbumListContext.Provider
+        value={{
+          albumList,
+          addAlbum: this.addAlbum,
+          deleteAlbum: this.deleteAlbum,
+          likeAlbum: this.likeAlbum,
+        }}
+      >
         {children}
       </AlbumListContext.Provider>
     );
