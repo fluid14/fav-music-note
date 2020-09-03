@@ -1,0 +1,34 @@
+@import './src/style/abstracts/variables'
+
+.form
+  display: flex
+  align-items: stretch
+  margin-top: 20px
+  .input
+    border: 1px solid $border
+    border-radius: 10px 0 0 10px
+    font-size: 16px
+    padding: 10px 20px
+
+    &:focus
+      outline: none
+      border-color: $main
+
+  .submitBtn
+    font-size: 16px
+    border: none
+    border-radius: 0 10px 10px 0
+    background-color: $main
+    color: $white
+    padding: 10px 20px
+    text-transform: uppercase
+    transition: .3s
+    cursor: pointer
+
+    &:hover,
+    &:focus
+      outline: none
+      background-color: $gray
+      color: $black
+
+

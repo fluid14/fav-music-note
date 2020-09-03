@@ -1,4 +1,5 @@
 {
-  "allAlbums": "all",
-  "bestAlbums": "best"
+  "home": "/",
+  "allAlbums": "/all",
+  "bestAlbums": "/best"
 }
