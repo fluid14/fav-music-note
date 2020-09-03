@@ -1,0 +1,36 @@
+@import './src/style/abstracts/variables'
+
+.navbar
+  display: flex
+  align-items: center
+  justify-content: space-between
+  position: relative
+  padding-top: 30px
+  padding-bottom: 60px
+
+  &::after
+    content: ''
+    position: absolute
+    left: 50%
+    bottom: 0
+    width: 80%
+    transform: translateX(-50%)
+    height: 1px
+    background-color: $border
+
+  .logo
+    max-width: 200px
+
+  .menu
+    display: flex
+    align-items: center
+
+    .menuItem
+      margin-left: 20px
+
+      &:nth-child(1)
+        margin-left: 0
+
+      .menuLink
+        font-size: 14px
+        text-transform: uppercase
