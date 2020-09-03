@@ -3,19 +3,22 @@
 .form
   display: flex
   align-items: stretch
-  margin-top: 20px
+  width: 100%
+  max-width: 400px
   .input
     border: 1px solid $border
     border-radius: 10px 0 0 10px
     font-size: 16px
     padding: 10px 20px
+    width: 100%
+    transition: .3s
 
     &:focus
       outline: none
       border-color: $main
 
   .submitBtn
-    font-size: 16px
+    font-size: 14px
     border: none
     border-radius: 0 10px 10px 0
     background-color: $main
