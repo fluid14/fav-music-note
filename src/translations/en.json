@@ -1,6 +1,15 @@
 {
+  "logoAlt": "FavMusicList Logo",
   "menu": {
     "allAlbums": "All albums",
     "bestAlbums": "Best of the best"
+  },
+  "addForm": {
+    "inputPlaceholder": "Add album",
+    "addBtn": "Add"
+  },
+  "listItem": {
+    "likeBtn": "Best of the best",
+    "deleteBtn": "Delete album"
   }
 }

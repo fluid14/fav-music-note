@@ -3,7 +3,6 @@ import cs from 'classnames';
 import styles from './AllAlbumsView.module.sass';
 import AddForm from '../../components/AddForm/AddForm';
 import AlbumsList from '../../components/AlbumsList/AlbumsList';
-import ListItem from '../../components/ListItem/ListItem';
 
 const AllAlbumsView = () => (
   <div className={cs(styles.allAlbumsView, 'wrap')}>

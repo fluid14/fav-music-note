@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import translate from 'translations/en.json';
 import styles from './AddForm.module.sass';
 
 class AddForm extends Component {
@@ -19,12 +20,12 @@ class AddForm extends Component {
         <input
           className={styles.input}
           type="text"
-          placeholder="Album title"
+          placeholder={translate.addForm.inputPlaceholder}
           value={value}
           onChange={this.handleChange}
         />
         <button className={styles.submitBtn} type="submit">
-          Add
+          {translate.addForm.addBtn}
         </button>
       </form>
     );

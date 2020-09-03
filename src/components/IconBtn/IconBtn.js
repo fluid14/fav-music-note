@@ -4,8 +4,8 @@ import cs from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './IconBtn.module.sass';
 
-const IconBtn = ({ icon, className }) => (
-  <button type="button" title="Best of the best" className={cs(className, styles.iconBtn)}>
+const IconBtn = ({ icon, className, title }) => (
+  <button type="button" title={title} className={cs(className, styles.iconBtn)}>
     <FontAwesomeIcon icon={icon} />
   </button>
 );
@@ -15,6 +15,7 @@ export default IconBtn;
 IconBtn.propTypes = {
   icon: PropTypes.element.isRequired,
   className: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 IconBtn.defaultProps = {
