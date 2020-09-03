@@ -1,33 +1,49 @@
 import React, { Component } from 'react';
 import translate from 'translations/en.json';
 import styles from './AddForm.module.sass';
+import { AlbumListConsumer } from '../../context/AlbumsListContext';
 
 class AddForm extends Component {
   state = {
     value: '',
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ value: e.target.value });
   };
 
-  handleSubmit = () => {};
+  handleSubmit = (e, submitFunction, value) => {
+    e.preventDefault();
+    submitFunction(value);
+    this.setState({ value: '' });
+  };
 
   render() {
     const { value } = this.state;
     return (
-      <form className={styles.form} onSubmit={this.handleSubmit}>
-        <input
-          className={styles.input}
-          type="text"
-          placeholder={translate.addForm.inputPlaceholder}
-          value={value}
-          onChange={this.handleChange}
-        />
-        <button className={styles.submitBtn} type="submit">
-          {translate.addForm.addBtn}
-        </button>
-      </form>
+      <AlbumListConsumer>
+        {albumList => {
+          return (
+            <form
+              className={styles.form}
+              onSubmit={e => {
+                this.handleSubmit(e, albumList.addAlbum, value);
+              }}
+            >
+              <input
+                className={styles.input}
+                type="text"
+                placeholder={translate.addForm.inputPlaceholder}
+                value={value}
+                onChange={this.handleChange}
+              />
+              <button className={styles.submitBtn} type="submit">
+                {translate.addForm.addBtn}
+              </button>
+            </form>
+          );
+        }}
+      </AlbumListConsumer>
     );
   }
 }

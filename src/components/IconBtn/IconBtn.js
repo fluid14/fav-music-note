@@ -13,7 +13,7 @@ const IconBtn = ({ icon, className, title }) => (
 export default IconBtn;
 
 IconBtn.propTypes = {
-  icon: PropTypes.element.isRequired,
+  icon: PropTypes.object.isRequired,
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
