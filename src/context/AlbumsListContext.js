@@ -25,7 +25,7 @@ class AlbumListProvider extends Component {
   };
 
   addAlbum = item => {
-    if (item !== '') {
+    if (item !== '' && !/^ *$/.test(item)) {
       const { albumList } = this.state;
       albumList.set(uuid(), { title: item, markAsBest: false });
       this.setAlbumState(albumList);

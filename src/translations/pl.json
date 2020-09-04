@@ -1,0 +1,16 @@
+{
+  "logoAlt": "FavMusicList Logo",
+  "menu": {
+    "allAlbums": "Wszystkie",
+    "bestAlbums": "Nejlepsze albumy"
+  },
+  "addForm": {
+    "inputPlaceholder": "Tytuł albumu",
+    "addBtn": "Dodaj"
+  },
+  "listItem": {
+    "likeBtn": "Nejlepsze z najlepszych",
+    "deleteBtn": "Usuń album"
+  },
+  "emptyListMsg": "Lista jest pusta :("
+}

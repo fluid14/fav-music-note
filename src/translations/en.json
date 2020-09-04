@@ -9,8 +9,8 @@
     "addBtn": "Add"
   },
   "listItem": {
-    "likeBtn": "Best of the best",
-    "deleteBtn": "Delete album"
+    "likeBtn": "Set as best of the best",
+    "deleteBtn": "Remove"
   },
   "emptyListMsg": "The list is empty :("
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import translate from 'translations/en.json';
 import { AlbumListConsumer } from 'context/AlbumsListContext';
+import { LanguageContextConsumer } from 'context/LanguageContext';
 import styles from './AddForm.module.sass';
 
 class AddForm extends Component {
@@ -21,29 +21,37 @@ class AddForm extends Component {
   render() {
     const { value } = this.state;
     return (
-      <AlbumListConsumer>
-        {albumList => {
+      <LanguageContextConsumer>
+        {lang => {
+          const { translate } = lang;
           return (
-            <form
-              className={styles.form}
-              onSubmit={e => {
-                this.handleSubmit(e, albumList.addAlbum, value);
+            <AlbumListConsumer>
+              {albumList => {
+                return (
+                  <form
+                    className={styles.form}
+                    onSubmit={e => {
+                      this.handleSubmit(e, albumList.addAlbum, value);
+                    }}
+                  >
+                    <input
+                      className={styles.input}
+                      type="text"
+                      placeholder={translate.addForm.inputPlaceholder}
+                      value={value}
+                      onChange={this.handleChange}
+                      required
+                    />
+                    <button className={styles.submitBtn} type="submit">
+                      {translate.addForm.addBtn}
+                    </button>
+                  </form>
+                );
               }}
-            >
-              <input
-                className={styles.input}
-                type="text"
-                placeholder={translate.addForm.inputPlaceholder}
-                value={value}
-                onChange={this.handleChange}
-              />
-              <button className={styles.submitBtn} type="submit">
-                {translate.addForm.addBtn}
-              </button>
-            </form>
+            </AlbumListConsumer>
           );
         }}
-      </AlbumListConsumer>
+      </LanguageContextConsumer>
     );
   }
 }
