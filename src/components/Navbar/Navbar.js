@@ -12,7 +12,7 @@ const NavBar = () => (
       <img src={logo} alt={translate.logoAlt} className={styles.logo} />
       <ul className={styles.menu}>
         <li className={styles.menuItem}>
-          <NavLink className={styles.menuLink} to={routes.allAlbums}>
+          <NavLink className={styles.menuLink} to={routes.home}>
             {translate.menu.allAlbums}
           </NavLink>
         </li>
