@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import translate from 'translations/en.json';
-import styles from './AddForm.module.sass';
 import { AlbumListConsumer } from 'context/AlbumsListContext';
+import styles from './AddForm.module.sass';
 
 class AddForm extends Component {
   state = {

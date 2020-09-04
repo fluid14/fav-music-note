@@ -28,9 +28,17 @@ class AlbumListProvider extends Component {
     }
   };
 
-  deleteAlbum = item => {
+  deleteAlbum = id => {
     const { albumList } = this.state;
-    albumList.delete(item);
+    albumList.delete(id);
+    this.setState({ albumList }, () => this.setLocalStorage('albumList', albumList));
+  };
+
+  markAsBest = id => {
+    const { albumList } = this.state;
+    const currentAlbum = albumList.get(id);
+    const updatedAlbum = { ...currentAlbum, markAsBest: !currentAlbum.markAsBest };
+    albumList.set(id, updatedAlbum);
     this.setState({ albumList }, () => this.setLocalStorage('albumList', albumList));
   };
 

@@ -1,5 +1,5 @@
 import React from 'react';
+import AlbumList from 'components/AlbumsList/AlbumList';
 
-const BestAlbumsView = () => <h1>best albums view</h1>;
-
+const BestAlbumsView = () => <AlbumList onlyBestAlbums className="wrap sm" />;
 export default BestAlbumsView;

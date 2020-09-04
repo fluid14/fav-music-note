@@ -5,11 +5,16 @@ import translate from 'translations/en.json';
 import IconBtn from 'components/IconBtn/IconBtn';
 import styles from './ListItem.module.sass';
 
-const ListItem = ({ children, id, deleteFn, likeFn }) => (
+const ListItem = ({ children, id, deleteFn, likeFn, markAsBest }) => (
   <li className={styles.listItem}>
     <p className={styles.albumTitle}>{children}</p>
     <div className={styles.actionWrap}>
-      <IconBtn icon={faHeart} title={translate.listItem.likeBtn} onClickFn={() => likeFn(id)} />
+      <IconBtn
+        icon={faHeart}
+        title={translate.listItem.likeBtn}
+        markAsBest={markAsBest}
+        onClickFn={() => likeFn(id)}
+      />
       <IconBtn
         icon={faTrashAlt}
         title={translate.listItem.deleteBtn}
@@ -26,4 +31,5 @@ ListItem.propTypes = {
   id: PropTypes.string.isRequired,
   deleteFn: PropTypes.func.isRequired,
   likeFn: PropTypes.func.isRequired,
+  markAsBest: PropTypes.bool.isRequired,
 };
