@@ -1,49 +1,50 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { v4 as uuid } from 'uuid';
 
 const AlbumListContext = React.createContext();
 
 class AlbumListProvider extends Component {
   state = {
-    albumList: [],
+    albumList: new Map(),
   };
 
   componentDidMount() {
-    const albums = JSON.parse(localStorage.getItem('albums'));
-    if (albums) {
-      this.setState({ albumList: albums });
+    const albumList = JSON.parse(localStorage.getItem('albumList'));
+    if (albumList) {
+      this.setState({ albumList: new Map([...albumList]) });
     }
   }
 
+  setLocalStorage = (key, item) => {
+    localStorage.setItem(key, JSON.stringify([...item]));
+  };
+
   addAlbum = item => {
     if (item !== '') {
-      this.setState(
-        prevState => ({
-          albumList: [...prevState.albumList, { name: item, liked: false }],
-        }),
-        () => localStorage.setItem('albums', JSON.stringify(this.state.albumList)),
-      );
+      const { albumList } = this.state;
+      albumList.set(uuid(), { title: item, markAsBest: false });
+      this.setState({ albumList }, () => this.setLocalStorage('albumList', albumList));
     }
   };
 
   deleteAlbum = item => {
-    const newList = this.state.albumList.filter(album => album.name !== item);
-    this.setState({ albumList: newList }, () =>
-      localStorage.setItem('albums', JSON.stringify(this.state.albumList)),
-    );
+    const { albumList } = this.state;
+    albumList.delete(item);
+    this.setState({ albumList }, () => this.setLocalStorage('albumList', albumList));
   };
 
   render() {
     const { children } = this.props;
     const { albumList } = this.state;
-    console.log(albumList);
+    const albumListArray = [...albumList];
     return (
       <AlbumListContext.Provider
         value={{
-          albumList,
+          albumList: albumListArray,
           addAlbum: this.addAlbum,
           deleteAlbum: this.deleteAlbum,
-          likeAlbum: this.likeAlbum,
+          markAsBest: this.markAsBest,
         }}
       >
         {children}

@@ -5,7 +5,7 @@
     "bestAlbums": "Best of the best"
   },
   "addForm": {
-    "inputPlaceholder": "Add album",
+    "inputPlaceholder": "Album title",
     "addBtn": "Add"
   },
   "listItem": {
