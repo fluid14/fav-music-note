@@ -44,7 +44,7 @@ const AlbumList = ({ className, onlyBestAlbums }) => (
             );
           })
         ) : (
-          <p>{translate.emptyListMsg}</p>
+          <p className={styles.emptyInfo}>{translate.emptyListMsg}</p>
         );
       }}
     </AlbumListConsumer>

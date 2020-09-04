@@ -1,12 +1,19 @@
 @import './src/style/abstracts/variables'
 
 .navbar
-  display: flex
-  align-items: center
-  justify-content: space-between
-  position: relative
-  padding-top: 30px
-  padding-bottom: 60px
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 3
+  .navContent
+    display: flex
+    align-items: center
+    justify-content: space-between
+    flex-wrap: wrap
+    padding-top: 30px
+    padding-bottom: 30px
+    background-color: $white
 
   &::after
     content: ''
@@ -14,16 +21,21 @@
     left: 50%
     bottom: 0
     width: 80%
+    max-width: 1350px
     transform: translateX(-50%)
     height: 1px
     background-color: $border
 
   .logo
     max-width: 200px
+    margin: 0 20px 20px 0
 
   .menu
     display: flex
     align-items: center
+    justify-content: flex-end
+    flex-grow: 1
+
 
     .menuItem
       display: block

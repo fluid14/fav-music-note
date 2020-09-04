@@ -20,18 +20,22 @@ class AlbumListProvider extends Component {
     localStorage.setItem(key, JSON.stringify([...item]));
   };
 
+  setAlbumState = albumList => {
+    this.setState({ albumList }, () => this.setLocalStorage('albumList', albumList));
+  };
+
   addAlbum = item => {
     if (item !== '') {
       const { albumList } = this.state;
       albumList.set(uuid(), { title: item, markAsBest: false });
-      this.setState({ albumList }, () => this.setLocalStorage('albumList', albumList));
+      this.setAlbumState(albumList);
     }
   };
 
   deleteAlbum = id => {
     const { albumList } = this.state;
     albumList.delete(id);
-    this.setState({ albumList }, () => this.setLocalStorage('albumList', albumList));
+    this.setAlbumState(albumList);
   };
 
   markAsBest = id => {
@@ -39,7 +43,7 @@ class AlbumListProvider extends Component {
     const currentAlbum = albumList.get(id);
     const updatedAlbum = { ...currentAlbum, markAsBest: !currentAlbum.markAsBest };
     albumList.set(id, updatedAlbum);
-    this.setState({ albumList }, () => this.setLocalStorage('albumList', albumList));
+    this.setAlbumState(albumList);
   };
 
   render() {

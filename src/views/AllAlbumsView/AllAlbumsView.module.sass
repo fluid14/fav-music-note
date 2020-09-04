@@ -6,14 +6,30 @@
 
   .listWrap,
   .formWrap
+    width: 50%
     padding: 0 30px
 
   .formWrap
+    position: relative
     display: flex
     justify-content: center
     align-items: flex-start
-    width: 50%
     border-right: 1px solid $border
 
-  .listWrap
-    width: 50%
+@media screen and (max-width: 991px)
+  .allAlbumsView
+    flex-direction: column
+    align-items: center
+
+    .listWrap,
+    .formWrap
+      width: 100%
+      padding: 0 20px
+
+    .formWrap
+      margin-bottom: 50px
+      border: none
+
+    .listWrap
+      max-width: 650px
+

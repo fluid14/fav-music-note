@@ -11,10 +11,12 @@
     "@testing-library/user-event": "^7.2.1",
     "classnames": "^2.2.6",
     "eslint": "^6.6.0",
+    "i18next": "^19.7.0",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-i18next": "^9.0.10",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "uuid": "^8.3.0"
