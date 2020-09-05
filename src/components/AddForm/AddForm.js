@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { AlbumListConsumer } from 'context/AlbumsListContext';
-import { LanguageContextConsumer } from 'context/LanguageContext';
+import withLangContext from 'HOC/LanguageContextHOC';
 import styles from './AddForm.module.sass';
 
 class AddForm extends Component {
@@ -20,40 +21,40 @@ class AddForm extends Component {
 
   render() {
     const { value } = this.state;
+    const {
+      context: { translate },
+    } = this.props;
     return (
-      <LanguageContextConsumer>
-        {lang => {
-          const { translate } = lang;
+      <AlbumListConsumer>
+        {albumList => {
           return (
-            <AlbumListConsumer>
-              {albumList => {
-                return (
-                  <form
-                    className={styles.form}
-                    onSubmit={e => {
-                      this.handleSubmit(e, albumList.addAlbum, value);
-                    }}
-                  >
-                    <input
-                      className={styles.input}
-                      type="text"
-                      placeholder={translate.addForm.inputPlaceholder}
-                      value={value}
-                      onChange={this.handleChange}
-                      required
-                    />
-                    <button className={styles.submitBtn} type="submit">
-                      {translate.addForm.addBtn}
-                    </button>
-                  </form>
-                );
+            <form
+              className={styles.form}
+              onSubmit={e => {
+                this.handleSubmit(e, albumList.addAlbum, value);
               }}
-            </AlbumListConsumer>
+            >
+              <input
+                className={styles.input}
+                type="text"
+                placeholder={translate.addForm.inputPlaceholder}
+                value={value}
+                onChange={this.handleChange}
+                required
+              />
+              <button className={styles.submitBtn} type="submit">
+                {translate.addForm.addBtn}
+              </button>
+            </form>
           );
         }}
-      </LanguageContextConsumer>
+      </AlbumListConsumer>
     );
   }
 }
 
-export default AddForm;
+export default withLangContext(AddForm);
+
+AddForm.propTypes = {
+  context: PropTypes.element.isRequired,
+};
