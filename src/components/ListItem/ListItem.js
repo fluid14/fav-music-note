@@ -5,7 +5,7 @@ import IconBtn from 'components/IconBtn/IconBtn';
 import { LanguageContextConsumer } from 'context/LanguageContext';
 import styles from './ListItem.module.sass';
 
-const ListItem = ({ children, id, deleteFn, likeFn, markAsBest }) => (
+const ListItem = ({ children, id, deleteFn, markAsBestFn, markAsBest }) => (
   <LanguageContextConsumer>
     {lang => {
       const { translate } = lang;
@@ -17,7 +17,7 @@ const ListItem = ({ children, id, deleteFn, likeFn, markAsBest }) => (
               icon={faHeart}
               title={translate.listItem.likeBtn}
               markAsBest={markAsBest}
-              onClickFn={() => likeFn(id)}
+              onClickFn={() => markAsBestFn(id)}
             />
             <IconBtn
               icon={faTrashAlt}
@@ -37,6 +37,6 @@ ListItem.propTypes = {
   children: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   deleteFn: PropTypes.func.isRequired,
-  likeFn: PropTypes.func.isRequired,
+  markAsBestFn: PropTypes.func.isRequired,
   markAsBest: PropTypes.bool.isRequired,
 };
