@@ -74,7 +74,7 @@ const AlbumListConsumer = ({ children }) => (
 );
 
 AlbumListConsumer.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.func.isRequired,
 };
 
 export { AlbumListProvider, AlbumListConsumer };

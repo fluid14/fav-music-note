@@ -16,7 +16,7 @@ const AlbumList = ({ className, onlyBestAlbums, context: { translate } }) => (
             const id = album[0];
             const { title, markAsBest: bestFlag } = album[1];
             return (
-              <>
+              <React.Fragment key={id}>
                 {onlyBestAlbums ? (
                   bestFlag && (
                     <ListItem
@@ -40,7 +40,7 @@ const AlbumList = ({ className, onlyBestAlbums, context: { translate } }) => (
                     {title}
                   </ListItem>
                 )}
-              </>
+              </React.Fragment>
             );
           })
         ) : (
@@ -56,7 +56,7 @@ export default withLangContext(AlbumList);
 AlbumList.propTypes = {
   className: PropTypes.string,
   onlyBestAlbums: PropTypes.bool,
-  context: PropTypes.element.isRequired,
+  context: PropTypes.object.isRequired,
 };
 
 AlbumList.defaultProps = {

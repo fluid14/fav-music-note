@@ -22,7 +22,7 @@ export default withLangContext(SwitchLang);
 
 SwitchLang.propTypes = {
   className: PropTypes.string,
-  context: PropTypes.element.isRequired,
+  context: PropTypes.object.isRequired,
 };
 
 SwitchLang.defaultProps = {

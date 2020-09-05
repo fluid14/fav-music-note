@@ -34,5 +34,5 @@ const NavBar = ({ context: { translate } }) => (
 export default withLangContext(NavBar);
 
 NavBar.propTypes = {
-  context: PropTypes.element.isRequired,
+  context: PropTypes.object.isRequired,
 };

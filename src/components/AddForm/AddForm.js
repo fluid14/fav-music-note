@@ -56,5 +56,5 @@ class AddForm extends Component {
 export default withLangContext(AddForm);
 
 AddForm.propTypes = {
-  context: PropTypes.element.isRequired,
+  context: PropTypes.object.isRequired,
 };

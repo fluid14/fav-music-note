@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import 'style/main.sass';
 import App from 'views/App';
 
-ReactDOM.hydrate(
+const renderMethod = !!module.hot ? ReactDOM.render : ReactDOM.hydrate;
+renderMethod(
   <React.StrictMode>
     <App />
   </React.StrictMode>,

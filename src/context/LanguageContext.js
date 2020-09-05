@@ -40,7 +40,7 @@ const LanguageContextConsumer = ({ children }) => (
 );
 
 LanguageContextConsumer.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
 };
 
 export { LanguageContextProvider, LanguageContextConsumer };
